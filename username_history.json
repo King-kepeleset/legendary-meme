@@ -3719,8 +3719,10 @@
     "history": []
   },
   "8702091162": {
-    "name": "𝐉𝐢𝐫 𝐚𝐝𝐚 𝐬á𝐭𝐭 | 𝐌𝐚𝐧𝐭𝐚𝐱",
-    "history": []
+    "name": "Support Monzo Banking Service",
+    "history": [
+      "Official_Monzo_Support_Serviceo"
+    ]
   },
   "8439611982": {
     "name": "AR STORE",
@@ -5822,6 +5824,12 @@
     "name": "Support CoinMarketCap Service",
     "history": [
       "CoinMarketCap_Official_Serviceee"
+    ]
+  },
+  "8640249364": {
+    "name": "CPANEL —𝐑𝐲𝐮𝐮 𝐃' 𝐋𝐮𝐜𝐚𝐬",
+    "history": [
+      "CPANEL_BOTTBOT"
     ]
   }
 }
