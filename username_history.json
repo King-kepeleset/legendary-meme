@@ -2748,7 +2748,9 @@
   },
   "6095776603": {
     "name": "𝗝𝗘𝗔𝗡 𝗥𝗘𝗔𝗗𝗬 𝗚𝗕 𝗦𝗘𝗧𝗜𝗔𝗣 𝗛𝗔𝗥𝗜",
-    "history": []
+    "history": [
+      "varjean"
+    ]
   },
   "8601205684": {
     "name": "SANZ AUTO ORDER PANEL/VPS",
@@ -6069,5 +6071,9 @@
     "history": [
       "Suport_Monzo_Bangking_Service1"
     ]
+  },
+  "7206691176": {
+    "name": "velle",
+    "history": []
   }
 }
