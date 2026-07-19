@@ -7125,7 +7125,9 @@
   },
   "5559751246": {
     "name": "𝗮𝗯𝗱𝘆",
-    "history": []
+    "history": [
+      "cpamat"
+    ]
   },
   "7424876754": {
     "name": "𝐑 𝐕 𝐓 𝟕 – ᴀʟᴋɪᴋᴜʀᴀɴɢᴍᴀᴋᴀɴ",
@@ -7135,6 +7137,12 @@
     "name": "êgisy ghiêr",
     "history": [
       "Egisychut"
+    ]
+  },
+  "8979076077": {
+    "name": "botpanel",
+    "history": [
+      "fahrulstore_bot"
     ]
   }
 }
