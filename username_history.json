@@ -8868,5 +8868,11 @@
   "6431649483": {
     "name": "NPT",
     "history": []
+  },
+  "8731946349": {
+    "name": "CoinMarketCap Support Service",
+    "history": [
+      "OfficiaI_CoinMarketCap_Service89"
+    ]
   }
 }
