@@ -1,0 +1,55 @@
+name: Build Flutter APK (Debug)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Build Tag / ID'
+        required: true
+        type: string
+      release_url:
+        description: 'URL Download ZIP'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    
+    steps:
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.24.0'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Download Source Code
+        run: |
+          echo "📥 Downloading from: ${{ github.event.inputs.release_url }}"
+          curl -L -o source.zip "${{ github.event.inputs.release_url }}"
+          mkdir project
+          unzip -q source.zip -d project
+
+      - name: Build APK Debug
+        run: |
+          cd project
+          flutter pub get
+          flutter build apk --debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: project/build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 7
+
+      - name: Build Success
+        if: success()
+        run: echo "✅ Build APK Debug berhasil!"
