@@ -1,0 +1,64 @@
+name: Build Flutter APK (Release)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Build Tag / ID'
+        required: true
+        type: string
+      release_url:
+        description: 'URL Download ZIP'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    
+    steps:
+      # Step 1: Setup Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: '3.24.0'
+
+      # Step 2: Setup Java (dibutuhkan Flutter)
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Step 3: Download source code dari release URL
+      - name: Download Source Code
+        run: |
+          echo "📥 Downloading from: ${{ github.event.inputs.release_url }}"
+          curl -L -o source.zip "${{ github.event.inputs.release_url }}"
+          mkdir project
+          unzip -q source.zip -d project
+          ls -la project/
+
+      # Step 4: Build APK Release
+      - name: Build APK Release
+        run: |
+          cd project
+          echo "📦 Getting dependencies..."
+          flutter pub get
+          echo "🔨 Building APK Release..."
+          flutter build apk --release --no-tree-shake-icons
+
+      # Step 5: Upload APK sebagai artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: project/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 7
+
+      # Step 6: Notifikasi sukses (opsional)
+      - name: Build Success
+        if: success()
+        run: echo "✅ Build APK Release berhasil!"
